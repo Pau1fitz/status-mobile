@@ -81,7 +81,11 @@
 (defn- indicator
   [active?]
   [rn/view
+<<<<<<< HEAD
    {:style (wallet-style/indicator-wrapper-style active?)}])
+=======
+   {:style (wallet-style/indicator-wrapper-style is-active)}])
+>>>>>>> 1f16094b9 (call fn)
 
 (defn- indicator-list
   [indicator-count current-index]
