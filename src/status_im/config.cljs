@@ -9,7 +9,7 @@
 
 (defn enabled? [v] (= "1" v))
 
-(goog-define INFURA_TOKEN "34121f20e3404c549a3560750fbfb0f7")
+(goog-define INFURA_TOKEN "")
 (goog-define POKT_TOKEN "3ef2018191814b7e1009b8d9")
 (goog-define ALCHEMY_ARBITRUM_GOERLI_TOKEN "")
 (goog-define ALCHEMY_OPTIMISM_GOERLI_TOKEN "")
@@ -164,5 +164,5 @@
 (def fetch-messages-enabled? (enabled? (get-config :FETCH_MESSAGES_ENABLED "1")))
 
 (def wallet-feature-flags
-  {:edit-default-keypair true
-   :bridge-token         true})
+  {:edit-default-keypair false
+   :bridge-token         false})

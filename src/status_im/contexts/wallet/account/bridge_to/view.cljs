@@ -1,15 +1,15 @@
 (ns status-im.contexts.wallet.account.bridge-to.view
   (:require
-    [clojure.string :as string]
-    [quo.core :as quo]
-    [quo.foundations.resources :as quo.resources]
-    [quo.theme :as quo.theme]
-    [react-native.core :as rn]
-    [status-im.contexts.wallet.account.bridge-to.style :as style]
-    [status-im.contexts.wallet.common.account-switcher.view :as account-switcher]
-    [status-im.contexts.wallet.common.utils :as utils]
-    [utils.i18n :as i18n]
-    [utils.re-frame :as rf]))
+   [clojure.string :as string]
+   [quo.core :as quo]
+   [quo.foundations.resources :as quo.resources]
+   [quo.theme :as quo.theme]
+   [react-native.core :as rn]
+   [status-im.contexts.wallet.account.bridge-to.style :as style]
+   [status-im.contexts.wallet.common.account-switcher.view :as account-switcher]
+   [status-im.contexts.wallet.common.utils :as utils]
+   [utils.i18n :as i18n]
+   [utils.re-frame :as rf]))
 
 (defn- bridge-token-component
   []
@@ -28,6 +28,9 @@
        {:label         (name network-name)
         :network-image (quo.resources/get-network (:network-name network))
         :token-value   (str crypto-formatted " " (:symbol token))
+        :on-press    #(rf/dispatch [:wallet/select-bridge-send
+                                    {:token    token
+                                     :stack-id :wallet-bridge}])
         :fiat-value    fiat-formatted}])))
 
 (defn- view-internal
@@ -42,7 +45,6 @@
         layer-2-networks (rest network-details)
         account-token    (some #(when (= token-symbol (:symbol %)) %) tokens)]
 
-
     [rn/view
      [account-switcher/view
       {:on-press            #(rf/dispatch [:navigate-back-within-stack :wallet-bridge-to])
@@ -53,7 +55,6 @@
        :title           (i18n/label :t/bridge-to {:name (string/upper-case (str (:label token)))})}]
      [rn/view style/content-container
       [bridge-token-component (assoc mainnet :network-name :t/mainnet) account-token]]
-
      [quo/divider-label (i18n/label :t/layer-2)]
      [rn/flat-list
       {:data                    layer-2-networks

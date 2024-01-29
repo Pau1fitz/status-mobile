@@ -47,8 +47,8 @@
    [status-im.contexts.syncing.scan-sync-code-page.view :as scan-sync-code-page]
    [status-im.contexts.syncing.setup-syncing.view :as settings-setup-syncing]
    [status-im.contexts.syncing.syncing-devices-list.view :as settings-syncing]
+   [status-im.contexts.wallet.account.bridge-send.view :as bridge-send]
    [status-im.contexts.wallet.account.bridge-to.view :as bridge-to]
-   [status-im.contexts.wallet.account.bridge-amount.view :as bridge-amount]
    [status-im.contexts.wallet.account.bridge.view :as bridge]
    [status-im.contexts.wallet.account.view :as wallet-accounts]
    [status-im.contexts.wallet.add-address-to-watch.confirm-address.view :as confirm-address-to-watch]
@@ -328,9 +328,9 @@
      :options   {:insets {:top? true}}
      :component bridge-to/view}
 
-    {:name      :wallet-bridge-amount
+    {:name      :wallet-bridge-send
      :options   {:insets {:top? true}}
-     :component bridge-amount/view}
+     :component bridge-send/view}
 
     {:name      :wallet-edit-derivation-path
      :component wallet-edit-derivation-path/view}
