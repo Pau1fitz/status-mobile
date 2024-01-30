@@ -23,6 +23,6 @@
      [input-amount/view
       {:crypto-decimals crypto-decimals
        :limit-crypto    limit-crypto
-       :bridge?         true}]]))
+       :type            :bridge}]]))
 
 (def view (quo.theme/with-theme view-internal))

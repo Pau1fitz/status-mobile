@@ -61,7 +61,7 @@
 
 (defn- f-view-internal
   ;; crypto-decimals and limit-crypto args are needed for component tests only
-  [{:keys [crypto-decimals limit-crypto bridge?]}]
+  [{:keys [crypto-decimals limit-crypto type]}]
   (let [bottom                    (safe-area/get-bottom)
         {:keys [currency]}        (rf/sub [:profile/profile])
         token                     (rf/sub [:wallet/wallet-send-token])
@@ -141,7 +141,7 @@
         [rn/view
          {:style               style/screen
           :accessibility-label (str "container" (when @input-error "-error"))}
-         (when (not bridge?)
+         (when (not (= type :bridge))
            [account-switcher/view
             {:icon-name     :i/arrow-left
              :on-press      #(rf/dispatch [:navigate-back-within-stack :wallet-send-input-amount])
