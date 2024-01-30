@@ -44,7 +44,6 @@
         mainnet          (first network-details)
         layer-2-networks (rest network-details)
         account-token    (some #(when (= token-symbol (:symbol %)) %) tokens)]
-
     [rn/view
      [account-switcher/view
       {:on-press            #(rf/dispatch [:navigate-back-within-stack :wallet-bridge-to])
