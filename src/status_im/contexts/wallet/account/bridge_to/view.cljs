@@ -28,10 +28,10 @@
        {:label         (name network-name)
         :network-image (quo.resources/get-network (:network-name network))
         :token-value   (str crypto-formatted " " (:symbol token))
+        :fiat-value    fiat-formatted
         :on-press      #(rf/dispatch [:wallet/select-bridge-send
                                       {:token    token
-                                       :stack-id :wallet-bridge}])
-        :fiat-value    fiat-formatted}])))
+                                       :stack-id :wallet-bridge}])}])))
 
 (defn- view-internal
   []
